@@ -1,0 +1,18 @@
+{
+    "indexes": [
+      {
+        "collectionGroup": "property",
+        "queryScope": "COLLECTION",
+        "fields": [
+          {
+            "fieldPath": "addressLower",
+            "arrayConfig": "CONTAINS"
+          },
+          {
+            "fieldPath": "date",
+            "order": "DESCENDING"
+          }
+        ]
+      }
+    ]
+  }
