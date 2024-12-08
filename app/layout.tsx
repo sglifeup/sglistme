@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'SG Property Listings',
   description: 'Live Property Listings in Singapore',
   icons: {
-    icon: '/LIST(6).png',
+    icon: '/LIST(13).png',
   },
 }
 
