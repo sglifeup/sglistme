@@ -6,10 +6,10 @@ import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Property Listings',
-  description: 'A responsive website showcasing property data with sorting and search functionality',
+  title: 'SG Property Listings',
+  description: 'Live Property Listings in Singapore',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/LIST(1).svg',
   },
 }
 
