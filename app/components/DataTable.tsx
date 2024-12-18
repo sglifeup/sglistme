@@ -481,9 +481,6 @@ export default function DataTable({ isFavoritesTab = false }: DataTableProps) {
             </button>
           )}
         </div>
-        <div className="text-xs text-gray-500">
-          Use prefixes: address:, agent:, layout:, size:, psf: (e.g., "agent:john size:1000")
-        </div>
       </div>
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
