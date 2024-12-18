@@ -506,6 +506,20 @@ export default function DataTable({ isFavoritesTab = false }: DataTableProps) {
         <Table>
           <TableHeader>
             <TableRow>
+              {columns.map((column) => (
+                columnVisibility[column.key] && (
+                  <TableHead key={column.key}>
+                    <Button 
+                      variant="ghost" 
+                      onClick={() => handleSort(column.key as keyof Property)}
+                      className="h-8 w-full justify-start text-left font-medium"
+                    >
+                      {column.label}
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                )
+              ))}
               <TableHead className="w-8 px-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -513,7 +527,7 @@ export default function DataTable({ isFavoritesTab = false }: DataTableProps) {
                       <Settings className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="left">
+                  <DropdownMenuContent align="right">
                     {columns.map((column) => (
                       <DropdownMenuCheckboxItem
                         key={column.key}
@@ -531,20 +545,6 @@ export default function DataTable({ isFavoritesTab = false }: DataTableProps) {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </TableHead>
-              {columns.map((column) => (
-                columnVisibility[column.key] && (
-                  <TableHead key={column.key}>
-                    <Button 
-                      variant="ghost" 
-                      onClick={() => handleSort(column.key as keyof Property)}
-                      className="h-8 w-full justify-start text-left font-medium"
-                    >
-                      {column.label}
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                  </TableHead>
-                )
-              ))}
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -568,7 +568,6 @@ export default function DataTable({ isFavoritesTab = false }: DataTableProps) {
                   onClick={() => toggleFavorite(property.id)}
                   ref={index === filteredProperties.length - 1 ? lastPropertyElementRef : null}
                 >
-                  <TableCell className="w-8 px-2" />
                   {columnVisibility.address && <TableCell className="font-medium">{property.address || 'N/A'}</TableCell>}
                   {columnVisibility.price && <TableCell>{formatCurrency(property.price)}</TableCell>}
                   {columnVisibility.layout && <TableCell>{property.layout || 'N/A'}</TableCell>}
@@ -576,6 +575,7 @@ export default function DataTable({ isFavoritesTab = false }: DataTableProps) {
                   {columnVisibility.psf && <TableCell>{property.psf ? `$${property.psf.toFixed(2)}` : 'N/A'}</TableCell>}
                   {columnVisibility.agent && <TableCell>{property.agent || 'N/A'}</TableCell>}
                   {columnVisibility.date && <TableCell>{formatDate(property.date)}</TableCell>}
+                  <TableCell className="w-8 px-2" />
                 </TableRow>
               ))
             )}
